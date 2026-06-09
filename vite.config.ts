@@ -169,6 +169,7 @@ export default defineConfig({
     emptyOutDir: true,
     chunkSizeWarningLimit: 1500,
     rollupOptions: {
+      input: path.resolve(import.meta.dirname, "client/index.html"),
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) {
