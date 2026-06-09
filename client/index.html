@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    
+    <!-- Primary Meta Tags -->
+    <title>LeakQoara</title>
+    <meta name="title" content="LeakQoara" />
+    <meta name="description" content="Leakqoara Group empowers global commerce through integrated trade facilitation (LePort) and advanced cybersecurity &amp; IT solutions (LeTech)." />
+    <meta name="keywords" content="Leakqoara Group, Global Trade, Export Facilitation, Cybersecurity, IT Solutions, Zero-Trust Security, Data Loss Prevention" />
+    <meta name="author" content="Leakqoara Group of Companies" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://leak-qoara.vercel.app/" />
+    <meta property="og:title" content="Leakqoara Group of Companies" />
+    <meta property="og:description" content="Leakqoara Group empowers global commerce through integrated trade facilitation and advanced cybersecurity solutions." />
+    <meta property="og:image" content="https://leak-qoara.vercel.app/logo.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://leak-qoara.vercel.app/" />
+    <meta property="twitter:title" content="Leakqoara Group of Companies" />
+    <meta property="twitter:description" content="Leakqoara Group empowers global commerce through integrated trade facilitation and advanced cybersecurity solutions." />
+    <meta property="twitter:image" content="https://leak-qoara.vercel.app/logo.png" />
+    
+    <link rel="canonical" href="https://leak-qoara.vercel.app/" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@600;700;800&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@600;700;800&amp;display=swap" rel="stylesheet" />
+    </noscript>
+  </head>
+
+  <body>
+    <div id="root">
+      <h1>Leakqoara Group of Companies</h1>
+    </div>
+    <script>
+      window.onerror = function(msg, url, line, col, error) {
+        document.body.innerHTML = '<div style="color:red;padding:20px;font-family:sans-serif;">' +
+          '<h3>Critical Initialization Error</h3>' +
+          '<p><strong>Message:</strong> ' + msg + '</p>' +
+          '<p><strong>File:</strong> ' + url + ':' + line + ':' + col + '</p>' +
+          '<pre>' + (error ? error.stack : '') + '</pre>' +
+        '</div>';
+      };
+      window.addEventListener("unhandledrejection", function(event) {
+        document.body.innerHTML = '<div style="color:red;padding:20px;font-family:sans-serif;">' +
+          '<h3>Unhandled Promise Rejection</h3>' +
+          '<p><strong>Reason:</strong> ' + (event.reason ? event.reason.toString() : 'Unknown') + '</p>' +
+          '<pre>' + (event.reason && event.reason.stack ? event.reason.stack : '') + '</pre>' +
+        '</div>';
+      });
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+
+  </body>
+
+</html>

@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1780820771436,
+      "tag": "0000_majestic_longshot",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1780821608971,
+      "tag": "0001_wide_ogun",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1780984882378,
+      "tag": "0002_legal_ben_parker",
+      "breakpoints": true
+    }
+  ]
+}

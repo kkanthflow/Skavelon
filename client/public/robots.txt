@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://leak-qoara.vercel.app/sitemap.xml
