@@ -176,44 +176,6 @@ export default defineConfig({
         entryFileNames: "assets/[name].[hash].js",
         chunkFileNames: "assets/[name].[hash].js",
         assetFileNames: "assets/[name].[hash][extname]",
-        manualChunks(id) {
-          if (id.includes("node_modules")) {
-            // Core React runtime — rarely changes, long cache life
-            if (
-              id.includes("/react/") ||
-              id.includes("/react-dom/") ||
-              id.includes("/wouter/")
-            ) {
-              return "vendor-core";
-            }
-            // Data fetching layer
-            if (
-              id.includes("@tanstack/react-query") ||
-              id.includes("@trpc/") ||
-              id.includes("superjson")
-            ) {
-              return "vendor-query";
-            }
-            // Animation library
-            if (id.includes("framer-motion")) {
-              return "vendor-motion";
-            }
-            // Chart / D3 (heavy, rarely used on most pages)
-            if (id.includes("recharts") || id.includes("/d3")) {
-              return "vendor-charts";
-            }
-            // Icon set — large but tree-shakeable
-            if (id.includes("lucide-react")) {
-              return "vendor-icons";
-            }
-            // Radix UI components
-            if (id.includes("@radix-ui")) {
-              return "vendor-ui";
-            }
-            // Everything else (zod, date-fns, clsx, etc.)
-            return "vendor-misc";
-          }
-        },
       },
     },
   },
