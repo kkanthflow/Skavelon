@@ -58,10 +58,39 @@ export function serveStatic(app: Express) {
     );
   }
 
-  app.use(express.static(distPath));
+  // Serve static assets with long-lived cache headers.
+  // Vite content-hashes filenames (e.g. main.a1b2c3.js) so 1-year immutable is safe.
+  app.use(
+    express.static(distPath, {
+      maxAge: "1y",
+      immutable: true,
+      setHeaders(res, filePath) {
+        const ext = path.extname(filePath).toLowerCase();
+        // HTML is never cached — always fetch fresh so updated hashed assets are discovered
+        if (ext === ".html") {
+          res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+          res.setHeader("Pragma", "no-cache");
+          res.setHeader("Expires", "0");
+        } else if (
+          ext === ".js" || ext === ".css" || ext === ".woff" ||
+          ext === ".woff2" || ext === ".ttf" || ext === ".eot" ||
+          ext === ".svg" || ext === ".png" || ext === ".jpg" ||
+          ext === ".jpeg" || ext === ".webp" || ext === ".gif" ||
+          ext === ".ico"
+        ) {
+          // Versioned assets — immutable for 1 year
+          res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+        } else {
+          // Everything else (JSON, txt, xml) — revalidate on each request
+          res.setHeader("Cache-Control", "public, max-age=0, must-revalidate");
+        }
+      },
+    })
+  );
 
   // fall through to index.html if the file doesn't exist
   app.use("*", (_req, res) => {
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     res.sendFile(path.resolve(distPath, "index.html"));
   });
 }

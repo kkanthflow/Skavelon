@@ -1,6 +1,7 @@
 import "dotenv/config";
 import crypto from "crypto";
 import express from "express";
+import cookieParser from "cookie-parser";
 import { createServer, type IncomingMessage, type ServerResponse } from "http";
 import net from "net";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
@@ -58,9 +59,62 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 }
 
 async function startServer() {
-  const app = express();
+  const app    = express();
   const server = createServer(app);
-  
+
+  // Track open connections so we can drain them on shutdown
+  const openConnections = new Set<net.Socket>();
+  server.on("connection", (socket) => {
+    openConnections.add(socket);
+    socket.once("close", () => openConnections.delete(socket));
+  });
+
+  // ---------------------------------------------------------------------------
+  // Graceful shutdown — wired to cluster IPC "shutdown" message.
+  // Stops accepting new connections, waits for in-flight requests to finish,
+  // then force-closes keep-alive connections and exits cleanly.
+  // ---------------------------------------------------------------------------
+  process.on("message", (msg) => {
+    if (msg !== "shutdown") return;
+    console.log(`[Worker ${process.pid}] Draining ${openConnections.size} connection(s)…`);
+    server.close(() => {
+      console.log(`[Worker ${process.pid}] All connections drained — exiting`);
+      process.exit(0);
+    });
+    // Force-close lingering keep-alive connections after 8 s
+    setTimeout(() => {
+      openConnections.forEach((socket) => socket.destroy());
+    }, 8_000).unref();
+  });
+
+  // ---------------------------------------------------------------------------
+  // Enable ETags so browsers can use conditional GET (304 Not Modified).
+  // ---------------------------------------------------------------------------
+  app.set("etag", "strong");
+
+  // ---------------------------------------------------------------------------
+  // Cookie parser — must be registered before any route that reads cookies.
+  // ---------------------------------------------------------------------------
+  app.use(cookieParser());
+
+  // ---------------------------------------------------------------------------
+  // Request timeout middleware — returns 503 instead of hanging forever.
+  // Protects against slow clients and runaway DB queries blocking all workers.
+  // Default: 30 s (override with REQUEST_TIMEOUT_MS env var).
+  // ---------------------------------------------------------------------------
+  const REQUEST_TIMEOUT_MS = parseInt(process.env.REQUEST_TIMEOUT_MS ?? "30000", 10);
+  app.use((req, res, next) => {
+    const timer = setTimeout(() => {
+      if (res.headersSent) return;
+      console.warn(`[Worker ${process.pid}] Timeout: ${req.method} ${req.url}`);
+      res.status(503).json({ error: "Request timed out — please try again." });
+    }, REQUEST_TIMEOUT_MS);
+    res.on("finish", () => clearTimeout(timer));
+    res.on("close",  () => clearTimeout(timer));
+    next();
+  });
+
+
   // ---------------------------------------------------------------------------
   // Nonce-based Content Security Policy
   // A fresh nonce is generated per request and attached to res.locals so that
@@ -192,6 +246,26 @@ async function startServer() {
   });
 
 
+  // ---------------------------------------------------------------------------
+  // Health-check endpoint — used by load balancers, monitoring, and uptime
+  // checks. Returns 200 while the worker is healthy, 503 during shutdown.
+  // ---------------------------------------------------------------------------
+  app.get("/health", (_req, res) => {
+    const mem = process.memoryUsage();
+    res.status(200).json({
+      status:    "ok",
+      worker:    process.env.WORKER_SEQ ?? "standalone",
+      pid:       process.pid,
+      uptime:    Math.floor(process.uptime()),
+      memory: {
+        rss:      `${(mem.rss       / 1024 / 1024).toFixed(1)} MB`,
+        heapUsed: `${(mem.heapUsed  / 1024 / 1024).toFixed(1)} MB`,
+        heapTotal:`${(mem.heapTotal / 1024 / 1024).toFixed(1)} MB`,
+      },
+      timestamp: new Date().toISOString(),
+    });
+  });
+
   // tRPC API
   app.use(
     "/api/trpc",
@@ -207,6 +281,28 @@ async function startServer() {
     serveStatic(app);
   }
 
+  // ---------------------------------------------------------------------------
+  // Global error handler — MUST be registered after all routes.
+  // Catches any unhandled error thrown inside route handlers and returns a
+  // clean 500 JSON response. Prevents Express from crashing the worker.
+  // ---------------------------------------------------------------------------
+  app.use((
+    err:  Error,
+    _req: express.Request,
+    res:  express.Response,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _next: express.NextFunction
+  ) => {
+    const status = (err as { status?: number }).status ?? 500;
+    console.error(`[Worker ${process.pid}] Unhandled route error:`, err);
+    if (!res.headersSent) {
+      res.status(status).json({
+        error:   status === 500 ? "Internal server error" : err.message,
+        ...(process.env.NODE_ENV !== "production" && { stack: err.stack }),
+      });
+    }
+  });
+
   const preferredPort = parseInt(process.env.PORT || "3000");
   const port = await findAvailablePort(preferredPort);
 
@@ -215,8 +311,33 @@ async function startServer() {
   }
 
   server.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}/`);
+    console.log(`[Worker ${process.env.WORKER_SEQ ?? "standalone"}] Server running on http://localhost:${port}/  (PID ${process.pid})`);
+  });
+
+  // Surface port-binding errors clearly instead of crashing silently
+  server.on("error", (err: NodeJS.ErrnoException) => {
+    if (err.code === "EADDRINUSE") {
+      console.error(`[Worker ${process.pid}] Port ${port} already in use — exiting`);
+    } else {
+      console.error(`[Worker ${process.pid}] Server error:`, err);
+    }
+    process.exit(1);
   });
 }
 
-startServer().catch(console.error);
+// Export so cluster.ts can import and call it explicitly.
+export default startServer;
+
+// Auto-start only when this file is the main entry point
+// (i.e. run directly via `tsx watch server/_core/index.ts` in dev).
+// When imported by cluster.ts the named export is used instead.
+const isMain =
+  // ESM: import.meta.url matches the process argv entry
+  typeof import.meta !== "undefined" &&
+  process.argv[1] != null &&
+  (import.meta.url === `file:///${process.argv[1].replace(/\\/g, "/")}` ||
+   import.meta.url.endsWith(process.argv[1].replace(/\\/g, "/")));
+
+if (isMain) {
+  startServer().catch(console.error);
+}

@@ -32,8 +32,8 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
             className="text-5xl md:text-7xl font-bold text-white max-w-4xl tracking-tight leading-[1.1] mb-6"
           >
-            A truly global network <br className="hidden md:block" />
-            for lightning-fast inference
+            A Global Ecosystem <br className="hidden md:block" />
+            for Secure Digital Growth
           </motion.h1>
 
           <motion.p 
@@ -42,7 +42,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
             className="text-lg md:text-xl text-white/60 max-w-2xl mb-12"
           >
-            Leakqoara global network consists of more than 160 locations, allowing you to reach your users anywhere in the world.
+            Connecting businesses worldwide through cybersecurity excellence, technology innovation, and intelligent logistics solutions.
           </motion.p>
         </div>
 

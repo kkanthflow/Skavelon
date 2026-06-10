@@ -1,0 +1,36 @@
+{
+  "name": "Leakqoara Group of Companies",
+  "short_name": "LeakQoara",
+  "description": "Leakqoara Group empowers global commerce through integrated trade facilitation (LePort) and advanced cybersecurity & IT solutions (LeTech).",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#0a0a0f",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/videoframe_20011.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "LeakQoara homepage"
+    }
+  ],
+  "categories": ["business", "finance", "productivity"]
+}

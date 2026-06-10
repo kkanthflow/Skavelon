@@ -11,7 +11,25 @@ import App from "./App";
 import { getLoginUrl } from "./const";
 import "./index.css";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      // Data is considered fresh for 60 seconds — no refetch on mount/focus within that window
+      staleTime: 60 * 1000,
+      // Keep unused query data in memory for 5 minutes (survives page navigation)
+      gcTime: 5 * 60 * 1000,
+      // Retry failed requests up to 2 times with exponential back-off
+      retry: 2,
+      retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 10_000),
+      // Don't refetch on window focus for a snappier feel (data is fresh anyway)
+      refetchOnWindowFocus: false,
+    },
+    mutations: {
+      // Retry mutations once on network errors only
+      retry: 1,
+    },
+  },
+});
 
 const redirectToLoginIfUnauthorized = (error: unknown) => {
   if (!(error instanceof TRPCClientError)) return;
@@ -93,3 +111,32 @@ createRoot(document.getElementById("root")!).render(
     </QueryClientProvider>
   </trpc.Provider>
 );
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Service Worker Registration
+// Registered AFTER render so it never blocks first paint.
+// ─────────────────────────────────────────────────────────────────────────────
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/sw.js", { scope: "/" })
+      .then((registration) => {
+        console.log("[SW] Registered with scope:", registration.scope);
+
+        // Listen for updates (new SW version installed)
+        registration.addEventListener("updatefound", () => {
+          const newWorker = registration.installing;
+          if (!newWorker) return;
+          newWorker.addEventListener("statechange", () => {
+            if (
+              newWorker.state === "installed" &&
+              navigator.serviceWorker.controller
+            ) {
+              console.log("[SW] New version available — reload to update.");
+            }
+          });
+        });
+      })
+      .catch((err) => console.error("[SW] Registration failed:", err));
+  });
+}

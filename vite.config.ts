@@ -168,24 +168,50 @@ export default defineConfig({
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
     chunkSizeWarningLimit: 1500,
+    // Content-hash file names enable permanent browser caching (immutable assets)
     rollupOptions: {
       input: path.resolve(import.meta.dirname, "client/index.html"),
       output: {
+        // Content-addressable filenames — safe for 1-year immutable cache
+        entryFileNames: "assets/[name].[hash].js",
+        chunkFileNames: "assets/[name].[hash].js",
+        assetFileNames: "assets/[name].[hash][extname]",
         manualChunks(id) {
           if (id.includes("node_modules")) {
-            if (id.includes("react") || id.includes("react-dom") || id.includes("wouter")) {
+            // Core React runtime — rarely changes, long cache life
+            if (
+              id.includes("/react/") ||
+              id.includes("/react-dom/") ||
+              id.includes("/wouter/")
+            ) {
               return "vendor-core";
             }
-            if (id.includes("recharts") || id.includes("d3")) {
-              return "vendor-charts";
+            // Data fetching layer
+            if (
+              id.includes("@tanstack/react-query") ||
+              id.includes("@trpc/") ||
+              id.includes("superjson")
+            ) {
+              return "vendor-query";
             }
+            // Animation library
             if (id.includes("framer-motion")) {
               return "vendor-motion";
             }
+            // Chart / D3 (heavy, rarely used on most pages)
+            if (id.includes("recharts") || id.includes("/d3")) {
+              return "vendor-charts";
+            }
+            // Icon set — large but tree-shakeable
             if (id.includes("lucide-react")) {
               return "vendor-icons";
             }
-            return "vendor-others";
+            // Radix UI components
+            if (id.includes("@radix-ui")) {
+              return "vendor-ui";
+            }
+            // Everything else (zod, date-fns, clsx, etc.)
+            return "vendor-misc";
           }
         },
       },

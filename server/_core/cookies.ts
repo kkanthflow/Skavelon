@@ -23,7 +23,7 @@ function isSecureRequest(req: Request) {
 
 export function getSessionCookieOptions(
   req: Request
-): Pick<CookieOptions, "domain" | "httpOnly" | "path" | "sameSite" | "secure"> {
+): Pick<CookieOptions, "domain" | "httpOnly" | "maxAge" | "path" | "sameSite" | "secure"> {
   // const hostname = req.hostname;
   // const shouldSetDomain =
   //   hostname &&
@@ -40,9 +40,10 @@ export function getSessionCookieOptions(
   //       : undefined;
 
   return {
-    httpOnly: true,
-    path: "/",
-    sameSite: "lax", // Prevent CSRF while allowing OAuth redirects
+    httpOnly: true,                          // Not accessible from JS (XSS protection)
+    path: "/",                               // Available site-wide
+    sameSite: "lax",                         // Prevent CSRF while allowing OAuth redirects
     secure: process.env.NODE_ENV === "production" ? true : isSecureRequest(req),
+    maxAge: 7 * 24 * 60 * 60 * 1000,        // 7 days in ms — cookie persists across browser restarts
   };
 }

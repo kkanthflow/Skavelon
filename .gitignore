@@ -118,3 +118,5 @@ client/public/__manus__/version.json
 # pnpm workspace state (auto-generated, not source)
 pnpm-workspace-state.json
 node_modules/.modules.yaml
+
+.vercel
