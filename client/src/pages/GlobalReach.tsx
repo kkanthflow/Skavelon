@@ -61,11 +61,11 @@ export default function GlobalReach() {
         <div className="container mx-auto px-4">
           <div className="mb-12 w-full flex justify-center rounded-2xl shadow-2xl relative">
             <img
-              src="/images/global_reach_map.png"
+              src="/images/global_reach_map.webp"
               alt="Global Reach Map"
               width={1200}
               height={675}
-              loading="eager"
+              loading="lazy"
               className="w-full h-auto object-contain rounded-2xl"
             />
           </div>

@@ -11,7 +11,9 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src="/logo.png" alt="LeakQoara Logo" width={48} height={48} className="h-12 w-12 object-contain" />
+              <div className="w-12 h-12 rounded-full bg-black flex items-center justify-center border border-orange-500/30 overflow-hidden">
+                <img src="/logo.webp" alt="LeakQoara Logo" className="h-full w-full object-cover" />
+              </div>
               <h3 className="font-bold text-lg text-foreground">Leakqoara Group</h3>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
@@ -105,13 +107,17 @@ export default function Footer() {
 
           {/* Legal Links */}
           <div className="flex items-center gap-4">
-            <a href="#" className="text-muted-foreground hover:text-accent transition-all duration-300 text-sm">
-              Privacy Policy
-            </a>
+            <Link href="/privacy">
+              <a className="text-muted-foreground hover:text-accent transition-all duration-300 text-sm">
+                Privacy Policy
+              </a>
+            </Link>
             <span className="text-border">|</span>
-            <a href="#" className="text-muted-foreground hover:text-accent transition-all duration-300 text-sm">
-              Terms of Service
-            </a>
+            <Link href="/terms">
+              <a className="text-muted-foreground hover:text-accent transition-all duration-300 text-sm">
+                Terms of Service
+              </a>
+            </Link>
           </div>
         </div>
       </div>

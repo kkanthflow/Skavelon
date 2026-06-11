@@ -12,7 +12,7 @@
  * On fetch    → route to the appropriate strategy
  */
 
-const CACHE_VERSION = "v1";
+const CACHE_VERSION = "v2";
 const STATIC_CACHE   = `leakqoara-static-${CACHE_VERSION}`;
 const FONT_CACHE     = `leakqoara-fonts-${CACHE_VERSION}`;
 const IMAGE_CACHE    = `leakqoara-images-${CACHE_VERSION}`;
@@ -21,7 +21,7 @@ const IMAGE_CACHE    = `leakqoara-images-${CACHE_VERSION}`;
 const PRECACHE_ASSETS = [
   "/",
   "/index.html",
-  "/logo.png",
+  "/logo.webp",
   "/robots.txt",
 ];
 

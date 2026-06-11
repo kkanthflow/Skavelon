@@ -27,13 +27,27 @@
     <meta property="twitter:image" content="https://leak-qoara.vercel.app/logo.png" />
     
     <link rel="canonical" href="https://leak-qoara.vercel.app/" />
-    <link rel="icon" type="image/png" href="/logo.png" />
-    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="icon" type="image/png" href="/logo-small.png" />
+    <link rel="apple-touch-icon" href="/logo-small.png" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#0a0a0f" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Inline critical CSS to prevent flash -->
+    <style>
+      body {
+        margin: 0;
+        background-color: #050505;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+      }
+      #root {
+        background-color: #050505;
+        min-height: 100vh;
+      }
+    </style>
 
     <!-- DNS prefetch for external domains (zero-RTT early connection) -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
@@ -44,10 +58,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@600;700;800&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@600;700;800&amp;display=swap" rel="stylesheet" />
-    </noscript>
+    <link rel="preload" href="/images/glowing_globe.webp" imagesrcset="/images/glowing_globe-small.webp 450w, /images/glowing_globe.webp 900w" imagesizes="(max-width: 640px) 450px, 900px" as="image" fetchpriority="high" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap" />
   </head>
 
   <body>

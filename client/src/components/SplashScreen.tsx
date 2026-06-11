@@ -5,11 +5,11 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // The splash screen lasts for 2.5s, then fades out
+    // The splash screen lasts for 1.0s, then fades out
     const timer = setTimeout(() => {
       setIsVisible(false);
       setTimeout(onComplete, 800); // Wait for fade out animation to finish before unmounting
-    }, 2500);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, [onComplete]);
@@ -29,8 +29,8 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
             transition={{ duration: 1, ease: "easeOut" }}
             className="flex flex-col items-center"
           >
-            <div className="w-24 h-24 rounded-full bg-orange-500/20 flex items-center justify-center border border-orange-500/30 mb-8 shadow-[0_0_60px_rgba(249,115,22,0.4)]">
-              <img src="/logo.png" alt="LeakQoara Logo" className="h-12 w-12 object-contain" />
+            <div className="w-24 h-24 rounded-full bg-black flex items-center justify-center border border-orange-500/30 mb-8 shadow-[0_0_60px_rgba(249,115,22,0.4)] overflow-hidden">
+              <img src="/logo.webp" alt="LeakQoara Logo" className="h-full w-full object-cover" />
             </div>
             <h1 className="text-3xl md:text-5xl font-bold tracking-[0.3em] text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">
               LEAKQOARA

@@ -1,6 +1,6 @@
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, FileText, Users, Truck, Shield, Lock, Eye } from 'lucide-react';
+import { ArrowRight, FileText, Users, Truck, Shield, Lock, Eye, Smartphone, Apple, Palette, Wrench } from 'lucide-react';
 import { useSEO } from "@/hooks/useSEO";
 import { motion } from 'framer-motion';
 
@@ -48,6 +48,29 @@ export default function Services() {
       title: 'Zero-Trust Architecture',
       description: 'Continuous verification and strict access controls for all digital assets.',
       features: ['Continuous Authentication', 'Intrusion Detection', 'Secure Communications', 'Traffic Anomaly Analysis'],
+    },
+  ];
+
+  const appServices = [
+    {
+      icon: Smartphone,
+      title: 'Android App Development',
+      description: 'Build high-performance Android applications with modern technologies and optimized performance.',
+    },
+    {
+      icon: Apple,
+      title: 'iOS App Development',
+      description: 'Create secure and intuitive iPhone and iPad applications with premium user experiences.',
+    },
+    {
+      icon: Palette,
+      title: 'UI/UX Design',
+      description: 'Design visually appealing, user-centric interfaces that improve usability and customer satisfaction.',
+    },
+    {
+      icon: Wrench,
+      title: 'App Maintenance & Support',
+      description: 'Provide continuous updates, bug fixes, performance optimization, security enhancements, and long-term support.',
     },
   ];
 
@@ -155,48 +178,90 @@ export default function Services() {
         className="section-padding bg-[#111]"
       >
         <div className="container mx-auto px-4">
-          <div className="mb-16">
-            <div className="inline-block mb-4">
-              <span className="px-4 py-2 bg-accent/20 text-accent rounded-full text-sm font-semibold">
-                LeTech Services
-              </span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Cybersecurity & IT Solutions
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl">
-              Digital security innovation and enterprise protection.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {letechServices.map((service, index) => (
-              <div key={index} className="glass-effect p-8 rounded-xl hover:shadow-2xl transition-all duration-300 group hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] transition-all duration-500">
-                <div className="w-14 h-14 bg-accent/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-accent/30 transition-all duration-300">
-                  <service.icon className="w-7 h-7 text-accent" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">{service.description}</p>
-                <ul className="space-y-2">
-                  {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <span className="w-1.5 h-1.5 bg-accent rounded-full"></span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+          {/* Cybersecurity Subsection */}
+          <div>
+            <div className="mb-16">
+              <div className="inline-block mb-4">
+                <span className="px-4 py-2 bg-accent/20 text-accent rounded-full text-sm font-semibold">
+                  LeTech Services
+                </span>
               </div>
-            ))}
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+                Cybersecurity & IT Solutions
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl">
+                Digital security innovation and enterprise protection.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {letechServices.map((service, index) => (
+                <div key={index} className="glass-effect p-8 rounded-xl hover:shadow-2xl transition-all duration-300 group hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] transition-all duration-500">
+                  <div className="w-14 h-14 bg-accent/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-accent/30 transition-all duration-300">
+                    <service.icon className="w-7 h-7 text-accent" />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{service.description}</p>
+                  <ul className="space-y-2">
+                    {service.features.map((feature, i) => (
+                      <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <span className="w-1.5 h-1.5 bg-accent rounded-full"></span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 text-center">
+              <Link href="/letech">
+                <a>
+                  <Button variant="outline" className="flex items-center gap-2 mx-auto">
+                    Explore LeTech <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </a>
+              </Link>
+            </div>
           </div>
 
-          <div className="mt-12 text-center">
-            <Link href="/letech">
-              <a>
-                <Button variant="outline" className="flex items-center gap-2 mx-auto">
-                  Explore LeTech <ArrowRight className="w-4 h-4" />
-                </Button>
-              </a>
-            </Link>
+          {/* App Development Subsection */}
+          <div className="mt-24 pt-24 border-t border-white/5">
+            <div className="mb-16">
+              <div className="inline-block mb-4">
+                <span className="px-4 py-2 bg-accent/20 text-accent rounded-full text-sm font-semibold">
+                  App Development
+                </span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+                Building Innovative Mobile Applications for the Future
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl">
+                Delivering innovative mobile solutions through expert development, intuitive design, and reliable support.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {appServices.map((service, index) => (
+                <div key={index} className="glass-effect p-8 rounded-xl hover:shadow-2xl transition-all duration-300 group hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] transition-all duration-500">
+                  <div className="w-14 h-14 bg-accent/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-accent/30 transition-all duration-300">
+                    <service.icon className="w-7 h-7 text-accent" />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 text-center">
+              <Link href="/contact?division=LeTech">
+                <a>
+                  <Button variant="outline" className="flex items-center gap-2 mx-auto">
+                    Get Started <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </a>
+              </Link>
+            </div>
           </div>
         </div>
       </motion.section>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -14,21 +15,32 @@ export default function Contact() {
     title: "Contact Us",
     description: "Get in touch with Leakqoara Group for inquiries regarding global export trade facilitation (LePort) or enterprise cybersecurity solutions (LeTech).",
   });
+  const [location] = useLocation();
+  const getInitialDivision = (): 'LePort' | 'LeTech' | 'Both' => {
+    if (typeof window === 'undefined') return 'Both';
+    const searchParams = new URLSearchParams(window.location.search);
+    const division = searchParams.get('division');
+    return (division === 'LePort' || division === 'LeTech') ? division : 'Both';
+  };
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
-    divisionOfInterest: 'Both' as 'LePort' | 'LeTech' | 'Both',
+    divisionOfInterest: getInitialDivision(),
     message: '',
   });
 
-  useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search);
-    const division = searchParams.get('division');
-    if (division === 'LePort' || division === 'LeTech') {
-      setFormData(prev => ({ ...prev, divisionOfInterest: division }));
-    }
-  }, []);
+  // Sync state with URL query parameters on render if changed after initial render
+  const searchParams = new URLSearchParams(window.location.search);
+  const queryDivision = searchParams.get('division');
+  const targetDivision = (queryDivision === 'LePort' || queryDivision === 'LeTech') ? queryDivision : 'Both';
+  
+  const [lastQuery, setLastQuery] = useState(queryDivision);
+  if (queryDivision !== lastQuery) {
+    setLastQuery(queryDivision);
+    setFormData(prev => ({ ...prev, divisionOfInterest: targetDivision }));
+  }
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -46,10 +58,16 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      const divisionMap = {
+      const divisionMap: Record<'LePort' | 'LeTech' | 'Both', string> = {
         'LePort': 'LePort - Export & Trade',
         'LeTech': 'LeTech - Cybersecurity & IT Solutions',
         'Both': 'Both Divisions'
+      };
+
+      const requestTypeMap: Record<'LePort' | 'LeTech' | 'Both', string> = {
+        'LeTech': 'Demo Request',
+        'LePort': 'Appointment Request',
+        'Both': 'General Inquiry'
       };
 
       const templateParams = {
@@ -57,6 +75,7 @@ export default function Contact() {
         email: formData.email,
         company: formData.company || 'Not Provided',
         divisionOfInterest: divisionMap[formData.divisionOfInterest],
+        requestType: requestTypeMap[formData.divisionOfInterest],
         message: formData.message,
       };
 
@@ -284,7 +303,10 @@ export default function Contact() {
                 >
                   {isSubmitting ? 'Sending...' : (
                     <>
-                      Send Message <Send className="w-4 h-4" />
+                      {formData.divisionOfInterest === 'LeTech' ? 'Request Demo' : 
+                       formData.divisionOfInterest === 'LePort' ? 'Get an Appointment' : 
+                       'Send Message'}
+                      <Send className="w-4 h-4" />
                     </>
                   )}
                 </Button>

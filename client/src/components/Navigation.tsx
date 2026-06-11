@@ -50,8 +50,8 @@ export default function Navigation() {
       >
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center border border-orange-500/30">
-             <img src="/logo.png" alt="LeakQoara Logo" className="h-5 w-5 object-contain opacity-90" />
+          <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center border border-orange-500/30 overflow-hidden">
+             <img src="/logo.webp" alt="LeakQoara Logo" className="h-full w-full object-cover" />
           </div>
           <span className="font-semibold text-white hidden lg:block">
             Leakqoara

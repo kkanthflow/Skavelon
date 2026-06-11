@@ -96,7 +96,7 @@ export default function LePort() {
               <Link href="/contact?division=LePort">
                 <a>
                   <Button className="cta-button flex items-center gap-2">
-                    Get Started <ArrowRight className="w-4 h-4" />
+                    Get an Appointment <ArrowRight className="w-4 h-4" />
                   </Button>
                 </a>
               </Link>
@@ -104,11 +104,11 @@ export default function LePort() {
             <div className="relative hidden md:block aspect-[16/10] bg-muted/20 rounded-2xl overflow-hidden shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent rounded-2xl blur-3xl"></div>
               <img
-                src="/images/leport_export.png"
+                src="/images/leport_export.webp"
                 alt="LePort Export Services"
                 width={600}
                 height={375}
-                loading="eager"
+                loading="lazy"
                 className="relative rounded-2xl w-full h-full object-cover"
               />
             </div>
@@ -240,7 +240,7 @@ export default function LePort() {
           <Link href="/contact?division=LePort">
             <a>
               <Button className="cta-button flex items-center gap-2 mx-auto">
-                Contact LePort <ArrowRight className="w-4 h-4" />
+                Get an Appointment <ArrowRight className="w-4 h-4" />
               </Button>
             </a>
           </Link>

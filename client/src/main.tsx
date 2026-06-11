@@ -102,12 +102,32 @@ if (emailJsKey) {
   });
 }
 
+import { useState, useEffect } from "react";
+
+function DeferredAnalytics() {
+  const [shouldRender, setShouldRender] = useState(false);
+  useEffect(() => {
+    // Defer loading until after main content paints (1000ms delay)
+    const timer = setTimeout(() => {
+      setShouldRender(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!shouldRender) return null;
+  return (
+    <>
+      <Analytics />
+      <SpeedInsights />
+    </>
+  );
+}
+
 createRoot(document.getElementById("root")!).render(
   <trpc.Provider client={trpcClient} queryClient={queryClient}>
     <QueryClientProvider client={queryClient}>
       <App />
-      <Analytics />
-      <SpeedInsights />
+      <DeferredAnalytics />
     </QueryClientProvider>
   </trpc.Provider>
 );
