@@ -12,7 +12,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-12 h-12 rounded-full bg-black flex items-center justify-center border border-orange-500/30 overflow-hidden">
-                <img src="/logo.png" alt="Skavelon Logo" className="h-full w-full object-cover" />
+                <img src="/logo-new.png" alt="Skavelon Logo" className="h-full w-full object-cover" />
               </div>
               <h3 className="font-bold text-lg text-foreground">Skavelon Technologies</h3>
             </div>

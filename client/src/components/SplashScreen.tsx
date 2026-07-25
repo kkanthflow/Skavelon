@@ -34,7 +34,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
             className="flex flex-col items-center"
           >
             <div className="w-24 h-24 rounded-full bg-black flex items-center justify-center border border-orange-500/30 mb-8 shadow-[0_0_60px_rgba(249,115,22,0.4)] overflow-hidden">
-              <img src="/logo.png" alt="Skavelon Logo" className="h-full w-full object-cover" />
+              <img src="/logo-new.png" alt="Skavelon Logo" className="h-full w-full object-cover" />
             </div>
             <h1 className="text-3xl md:text-5xl font-bold tracking-[0.3em] text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60 text-center uppercase flex flex-col gap-2">
               <span>Skavelon</span>

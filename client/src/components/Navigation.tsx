@@ -48,7 +48,7 @@ export default function Navigation() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center border border-orange-500/30 overflow-hidden">
-             <img src="/logo.png" alt="Skavelon Logo" className="h-full w-full object-cover" />
+             <img src="/logo-new.png" alt="Skavelon Logo" className="h-full w-full object-cover" />
           </div>
           <span className="font-semibold text-white hidden lg:block">
             Skavelon

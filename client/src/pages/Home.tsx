@@ -22,7 +22,7 @@ export default function Home() {
       "@type": "Organization",
       "name": "Skavelon Technologies",
       "url": "https://leak-qoara.vercel.app/",
-      "logo": "https://leak-qoara.vercel.app/logo.png",
+      "logo": "https://leak-qoara.vercel.app/logo-new.png",
       "description": "Skavelon Technologies empowers global commerce through integrated trade facilitation and advanced cybersecurity & IT solutions (Cybersecurity).",
       "sameAs": [
         "https://www.linkedin.com/in/leak-qoara-60bb0b414/",
