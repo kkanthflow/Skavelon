@@ -172,10 +172,17 @@ export default function About() {
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             We operate with the highest standards and global compliance.
           </p>
-          <div className="flex justify-center">
+          <div className="flex flex-col items-center w-full max-w-4xl mx-auto">
+            <div className="w-full border border-white/10 rounded-xl overflow-hidden shadow-2xl bg-black/50 p-2 md:p-4 mb-6">
+              <iframe 
+                src="/certificate.pdf#toolbar=0" 
+                className="w-full h-[500px] md:h-[800px] rounded-lg bg-white"
+                title="Skavelon Company Certificate"
+              />
+            </div>
             <a href="/certificate.pdf" target="_blank" rel="noopener noreferrer">
-              <Button className="flex items-center gap-2">
-                <Eye className="w-4 h-4" /> View Company Certificate
+              <Button variant="outline" className="flex items-center gap-2">
+                <Eye className="w-4 h-4" /> Open Full Screen
               </Button>
             </a>
           </div>
