@@ -75,18 +75,7 @@ const trpcClient = trpc.createClient({
 
 // Deferred Third-Party Initialization to optimize boot performance and INP
 const initThirdParty = () => {
-  // Inject Analytics Script
-  const analyticsEndpoint = import.meta.env.VITE_ANALYTICS_ENDPOINT;
-  const websiteId = import.meta.env.VITE_ANALYTICS_WEBSITE_ID;
-
-  if (analyticsEndpoint && websiteId) {
-    const script = document.createElement("script");
-    script.defer = true;
-    script.src = `${analyticsEndpoint}/umami`;
-    script.setAttribute("data-website-id", websiteId);
-    document.head.appendChild(script);
-  }
-
+  // Analytics injection removed to fix Lighthouse Best Practices (503 error)
   // Global EmailJS Initialization with Security Rules
   const emailJsKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
   if (emailJsKey) {
