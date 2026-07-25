@@ -173,12 +173,22 @@ export default function About() {
             We operate with the highest standards and global compliance.
           </p>
           <div className="flex flex-col items-center w-full max-w-4xl mx-auto">
-            <div className="w-full border border-white/10 rounded-xl overflow-hidden shadow-2xl bg-black/50 p-2 md:p-4 mb-6">
-              <iframe 
-                src="/certificate.pdf#toolbar=0" 
-                className="w-full h-[500px] md:h-[800px] rounded-lg bg-white"
+            <div className="w-full border border-white/10 rounded-xl overflow-hidden shadow-2xl bg-white/5 p-2 md:p-4 mb-6 relative" style={{ minHeight: '600px' }}>
+              <object 
+                data="/certificate.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" 
+                type="application/pdf"
+                className="w-full h-[600px] md:h-[800px] rounded-lg"
                 title="Skavelon Company Certificate"
-              />
+              >
+                <div className="flex flex-col items-center justify-center h-full text-center p-8">
+                  <p className="text-white/60 mb-4">Your browser does not support inline PDFs.</p>
+                  <a href="/certificate.pdf" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" className="flex items-center gap-2">
+                      <Eye className="w-4 h-4" /> Download / View Certificate
+                    </Button>
+                  </a>
+                </div>
+              </object>
             </div>
             <a href="/certificate.pdf" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" className="flex items-center gap-2">
