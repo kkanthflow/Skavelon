@@ -60,34 +60,25 @@ export default function Home() {
         
         {/* Content */}
         <div className="container mx-auto px-4 relative z-10 flex flex-col items-center text-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+          <div 
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-white mb-8 backdrop-blur-sm"
           >
             <Globe className="w-4 h-4 text-orange-500" />
             <span>Global Network</span>
-          </motion.div>
+          </div>
 
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+          <h1 
             className="text-5xl md:text-7xl font-bold text-white max-w-4xl tracking-tight leading-[1.1] mb-6"
           >
             A Global Ecosystem <br className="hidden md:block" />
             for Secure Digital Growth
-          </motion.h1>
+          </h1>
 
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25, ease: "easeOut" }}
+          <p 
             className="text-lg md:text-xl text-white/60 max-w-2xl mb-12"
           >
             Connecting businesses worldwide through cybersecurity excellence, technology innovation, and intelligent logistics solutions.
-          </motion.p>
+          </p>
         </div>
 
         {/* Glowing Globe Container (Our "Own Video" Animation) */}
