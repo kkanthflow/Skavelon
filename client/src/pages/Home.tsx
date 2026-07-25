@@ -82,12 +82,7 @@ export default function Home() {
         </div>
 
         {/* Glowing Globe Container (Our "Own Video" Animation) */}
-        <motion.div 
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.35, ease: "easeOut" }}
-          className="relative w-full max-w-5xl mt-12 mb-12"
-        >
+        <div className="relative w-full max-w-5xl mt-12 mb-12 animate-fade-in-up">
           {/* Pulsing Orange Glow Behind Globe - Hidden on mobile for extreme performance */}
           <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-orange-500/40 rounded-full blur-[120px] mix-blend-screen pointer-events-none animate-pulse-glow" />
           
@@ -108,7 +103,7 @@ export default function Home() {
               }}
             />
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Static Sections */}
