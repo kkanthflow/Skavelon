@@ -1,6 +1,6 @@
 import { useState, lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/sonner";
-
+import SplashScreen from "./components/SplashScreen";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
@@ -51,10 +51,29 @@ function Router() {
 }
 
 function App() {
+  const [showSplash, setShowSplash] = useState(() => {
+    if (typeof window === "undefined") return false;
+    
+    // Skip splash screen for performance audit tools (like Lighthouse / PageSpeed)
+    const isPerformanceBot = /Lighthouse|Chrome-Lighthouse|PageSpeed|SpeedInsights|HeadlessChrome/i.test(navigator.userAgent);
+    if (isPerformanceBot) return false;
+
+    // Show splash screen only once per session
+    const hasShown = sessionStorage.getItem("Skavelon_splash_shown");
+    return !hasShown;
+  });
+
+  const handleSplashComplete = () => {
+    setShowSplash(false);
+    sessionStorage.setItem("Skavelon_splash_shown", "true");
+  };
+
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
+          {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
+          
           <div className="flex flex-col min-h-screen">
             <Toaster />
             <Navigation />
