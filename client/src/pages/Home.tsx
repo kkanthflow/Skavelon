@@ -88,8 +88,8 @@ export default function Home() {
           transition={{ duration: 1, delay: 0.35, ease: "easeOut" }}
           className="relative w-full max-w-5xl mt-12 mb-12"
         >
-          {/* Pulsing Orange Glow Behind Globe */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-orange-500/40 rounded-full blur-[120px] mix-blend-screen pointer-events-none animate-pulse-glow" />
+          {/* Pulsing Orange Glow Behind Globe - Hidden on mobile for extreme performance */}
+          <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-orange-500/40 rounded-full blur-[120px] mix-blend-screen pointer-events-none animate-pulse-glow" />
           
           <div className="animate-float-globe">
             <img
