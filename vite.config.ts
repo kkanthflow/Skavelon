@@ -171,11 +171,6 @@ export default defineConfig({
     rollupOptions: {
       input: path.resolve(import.meta.dirname, "client/index.html"),
       output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'wouter'],
-          'vendor-ui': ['lucide-react', 'framer-motion', 'clsx', 'tailwind-merge'],
-          'vendor-form': ['react-hook-form', '@hookform/resolvers', 'zod']
-        },
         entryFileNames: "assets/[name].[hash].js",
         chunkFileNames: "assets/[name].[hash].js",
         assetFileNames: "assets/[name].[hash][extname]",
