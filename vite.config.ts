@@ -172,7 +172,7 @@ export default defineConfig({
       input: path.resolve(import.meta.dirname, "client/index.html"),
       output: {
         manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'react-router', 'wouter'],
+          'vendor-react': ['react', 'react-dom', 'wouter'],
           'vendor-ui': ['lucide-react', 'framer-motion', 'clsx', 'tailwind-merge'],
           'vendor-form': ['react-hook-form', '@hookform/resolvers', 'zod']
         },
