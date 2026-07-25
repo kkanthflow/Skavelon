@@ -166,14 +166,16 @@ export default defineConfig({
   publicDir: path.resolve(import.meta.dirname, "client", "public"),
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
-    emptyOutDir: true,
-    sourcemap: true,
+    sourcemap: false,
     chunkSizeWarningLimit: 1500,
-    // Content-hash file names enable permanent browser caching (immutable assets)
     rollupOptions: {
       input: path.resolve(import.meta.dirname, "client/index.html"),
       output: {
-        // Content-addressable filenames — safe for 1-year immutable cache
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom', 'react-router', 'wouter'],
+          'vendor-ui': ['lucide-react', 'framer-motion', 'clsx', 'tailwind-merge'],
+          'vendor-form': ['react-hook-form', '@hookform/resolvers', 'zod']
+        },
         entryFileNames: "assets/[name].[hash].js",
         chunkFileNames: "assets/[name].[hash].js",
         assetFileNames: "assets/[name].[hash][extname]",

@@ -69,6 +69,16 @@
       <h1>Skavelon Technologies</h1>
     </div>
     <script>
+      // Fix Lighthouse Best Practices warning for deprecated 'unload' event (used by some React libraries)
+      const originalAddEventListener = window.addEventListener;
+      window.addEventListener = function (type, listener, options) {
+        if (type === 'unload') {
+          type = 'pagehide'; // Swap to the modern standard equivalent
+        }
+        return originalAddEventListener.call(window, type, listener, options);
+      };
+    </script>
+    <script>
       window.onerror = function(msg, url, line, col, error) {
         document.body.innerHTML = '<div style="color:red;padding:20px;font-family:sans-serif;">' +
           '<h3>Critical Initialization Error</h3>' +
