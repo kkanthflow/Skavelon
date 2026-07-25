@@ -255,4 +255,23 @@
   .cta-button:hover::before {
     @apply left-[100%];
   }
+
+  /* Pure CSS Animations for Mobile Performance */
+  @keyframes float-globe {
+    0%, 100% { transform: translateY(0) rotateY(-15deg); }
+    50% { transform: translateY(-15px) rotateY(15deg); }
+  }
+  .animate-float-globe {
+    animation: float-globe 10s ease-in-out infinite;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+    50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.6; }
+  }
+  .animate-pulse-glow {
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
 }

@@ -89,26 +89,9 @@ export default function Home() {
           className="relative w-full max-w-5xl mt-12 mb-12"
         >
           {/* Pulsing Orange Glow Behind Globe */}
-          <motion.div 
-            animate={{ scale: [1, 1.05, 1], opacity: [0.4, 0.6, 0.4] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-orange-500/40 rounded-full blur-[120px] mix-blend-screen pointer-events-none"
-          />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-orange-500/40 rounded-full blur-[120px] mix-blend-screen pointer-events-none animate-pulse-glow" />
           
-          <motion.div
-            animate={{ 
-              y: [0, -15, 0],
-              rotateY: [-15, 15, -15]
-            }}
-            transition={{ 
-              y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
-              rotateY: { duration: 10, repeat: Infinity, ease: "easeInOut" }
-            }}
-            style={{
-              perspective: 1000,
-              transformStyle: "preserve-3d"
-            }}
-          >
+          <div className="animate-float-globe">
             <img
               src="/images/glowing_globe.webp"
               srcSet="/images/glowing_globe-small.webp 450w, /images/glowing_globe.webp 900w"
@@ -124,7 +107,7 @@ export default function Home() {
                 maskImage: 'radial-gradient(circle at center, black 40%, transparent 70%)'
               }}
             />
-          </motion.div>
+          </div>
         </motion.div>
       </section>
 
