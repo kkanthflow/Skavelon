@@ -118,6 +118,7 @@ export default function Home() {
               decoding="sync"
               width="900"
               height="900"
+              alt="Skavelon Global Trade and Cybersecurity Network"
               style={{
                 WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 70%)',
                 maskImage: 'radial-gradient(circle at center, black 40%, transparent 70%)'

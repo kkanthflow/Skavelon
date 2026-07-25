@@ -77,7 +77,9 @@ function App() {
           <div className="flex flex-col min-h-screen">
             <Toaster />
             <Navigation />
-            <Router />
+            <main className="flex-grow w-full">
+              <Router />
+            </main>
             <Footer />
           </div>
         </TooltipProvider>

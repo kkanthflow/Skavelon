@@ -89,13 +89,13 @@ export default function Footer() {
 
           {/* Social Links */}
           <div className="flex items-center gap-4">
-            <a href="https://www.linkedin.com/in/leak-qoara-60bb0b414/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-all duration-300">
+            <a href="https://www.linkedin.com/in/leak-qoara-60bb0b414/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-muted-foreground hover:text-accent transition-all duration-300">
               <Linkedin className="w-5 h-5" />
             </a>
-            <a href="https://x.com/Skavelon" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-all duration-300">
+            <a href="https://x.com/Skavelon" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="text-muted-foreground hover:text-accent transition-all duration-300">
               <Twitter className="w-5 h-5" />
             </a>
-            <a href="#" className="text-muted-foreground hover:text-accent transition-all duration-300">
+            <a href="#" aria-label="Facebook" className="text-muted-foreground hover:text-accent transition-all duration-300">
               <Facebook className="w-5 h-5" />
             </a>
           </div>
