@@ -83,8 +83,11 @@ export default function Home() {
 
         {/* Glowing Globe Container (Our "Own Video" Animation) */}
         <div className="relative w-full max-w-5xl mt-12 mb-12 animate-fade-in-up">
-          {/* Pulsing Orange Glow Behind Globe - Hidden on mobile for extreme performance */}
-          <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-orange-500/40 rounded-full blur-[120px] mix-blend-screen pointer-events-none animate-pulse-glow" />
+          {/* Pulsing Orange Glow Behind Globe - Restored on mobile using a high-performance radial gradient instead of a slow blur filter */}
+          <div 
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] mix-blend-screen pointer-events-none animate-pulse-glow" 
+            style={{ background: 'radial-gradient(circle, rgba(249,115,22,0.5) 0%, rgba(249,115,22,0) 65%)' }}
+          />
           
           <div className="animate-float-globe">
             <img

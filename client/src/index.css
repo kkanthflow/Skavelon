@@ -276,10 +276,11 @@
   }
 
   @keyframes fade-in-up {
-    from { opacity: 0.01; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(100px); }
     to { opacity: 1; transform: translateY(0); }
   }
   .animate-fade-in-up {
-    animation: fade-in-up 0.5s ease-out forwards;
+    /* Perfectly matches the framer-motion: duration 1s, delay 0.35s, easeOut */
+    animation: fade-in-up 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 0.35s both;
   }
 }
