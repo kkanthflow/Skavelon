@@ -8,7 +8,7 @@ interface SEOProps {
 export function useSEO({ title, description }: SEOProps) {
   useEffect(() => {
     // Update document title
-    document.title = title === "LeakQoara" ? "LeakQoara" : `${title} | LeakQoara`;
+    document.title = title === "Skavelon" ? "Skavelon" : `${title} | Skavelon`;
 
     // Update meta description tag
     let metaDescription = document.querySelector('meta[name="description"]');

@@ -73,33 +73,46 @@ const trpcClient = trpc.createClient({
   ],
 });
 
-// Inject Analytics Script
-const analyticsEndpoint = import.meta.env.VITE_ANALYTICS_ENDPOINT;
-const websiteId = import.meta.env.VITE_ANALYTICS_WEBSITE_ID;
+// Deferred Third-Party Initialization to optimize boot performance and INP
+const initThirdParty = () => {
+  // Inject Analytics Script
+  const analyticsEndpoint = import.meta.env.VITE_ANALYTICS_ENDPOINT;
+  const websiteId = import.meta.env.VITE_ANALYTICS_WEBSITE_ID;
 
-if (analyticsEndpoint && websiteId) {
-  const script = document.createElement("script");
-  script.defer = true;
-  script.src = `${analyticsEndpoint}/umami`;
-  script.setAttribute("data-website-id", websiteId);
-  document.head.appendChild(script);
-}
+  if (analyticsEndpoint && websiteId) {
+    const script = document.createElement("script");
+    script.defer = true;
+    script.src = `${analyticsEndpoint}/umami`;
+    script.setAttribute("data-website-id", websiteId);
+    document.head.appendChild(script);
+  }
 
-// Global EmailJS Initialization with Security Rules
-const emailJsKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-if (emailJsKey) {
-  emailjs.init({
-    publicKey: emailJsKey,
-    blockHeadless: true,
-    blockList: {
-      list: ['foo@emailjs.com', 'bar@emailjs.com'], // Example blocked emails
-      watchVariable: 'email', // Must match the key used in templateParams
-    },
-    limitRate: {
-      id: 'app',
-      throttle: 10000, // Allow 1 request per 10s
-    },
-  });
+  // Global EmailJS Initialization with Security Rules
+  const emailJsKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+  if (emailJsKey) {
+    emailjs.init({
+      publicKey: emailJsKey,
+      blockHeadless: true,
+      blockList: {
+        list: ['foo@emailjs.com', 'bar@emailjs.com'],
+        watchVariable: 'email',
+      },
+      limitRate: {
+        id: 'app',
+        throttle: 10000,
+      },
+    });
+  }
+};
+
+if (typeof window !== "undefined") {
+  if (document.readyState === "complete") {
+    setTimeout(initThirdParty, 2500);
+  } else {
+    window.addEventListener("load", () => {
+      setTimeout(initThirdParty, 2500);
+    });
+  }
 }
 
 import { useState, useEffect } from "react";

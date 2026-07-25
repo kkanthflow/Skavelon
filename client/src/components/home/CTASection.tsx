@@ -17,15 +17,13 @@ export default function CTASection() {
           Ready to Go Global?
         </h2>
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Connect with Leakqoara Group today and unlock opportunities in global markets.
+          Connect with Skavelon Technologies today and unlock opportunities in global markets.
         </p>
-        <Link href="/contact">
-          <a>
+        <Link href="/contact"><a>
             <Button className="cta-button flex items-center gap-2 mx-auto">
               Start Your Journey <ArrowRight className="w-4 h-4" />
             </Button>
-          </a>
-        </Link>
+          </a></Link>
       </div>
     </motion.section>
   );

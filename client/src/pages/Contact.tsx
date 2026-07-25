@@ -13,14 +13,14 @@ import { motion } from 'framer-motion';
 export default function Contact() {
   useSEO({
     title: "Contact Us",
-    description: "Get in touch with Leakqoara Group for inquiries regarding global export trade facilitation (LePort) or enterprise cybersecurity solutions (LeTech).",
+    description: "Get in touch with Skavelon for inquiries regarding app development or cybersecurity solutions.",
   });
   const [location] = useLocation();
-  const getInitialDivision = (): 'LePort' | 'LeTech' | 'Both' => {
+  const getInitialDivision = (): 'AppDevelopment' | 'Cybersecurity' | 'Both' => {
     if (typeof window === 'undefined') return 'Both';
     const searchParams = new URLSearchParams(window.location.search);
     const division = searchParams.get('division');
-    return (division === 'LePort' || division === 'LeTech') ? division : 'Both';
+    return (division === 'AppDevelopment' || division === 'Cybersecurity') ? division : 'Both';
   };
 
   const [formData, setFormData] = useState({
@@ -34,7 +34,7 @@ export default function Contact() {
   // Sync state with URL query parameters on render if changed after initial render
   const searchParams = new URLSearchParams(window.location.search);
   const queryDivision = searchParams.get('division');
-  const targetDivision = (queryDivision === 'LePort' || queryDivision === 'LeTech') ? queryDivision : 'Both';
+  const targetDivision = (queryDivision === 'AppDevelopment' || queryDivision === 'Cybersecurity') ? queryDivision : 'Both';
   
   const [lastQuery, setLastQuery] = useState(queryDivision);
   if (queryDivision !== lastQuery) {
@@ -50,7 +50,7 @@ export default function Contact() {
   };
 
   const handleSelectChange = (value: string) => {
-    setFormData(prev => ({ ...prev, divisionOfInterest: value as 'LePort' | 'LeTech' | 'Both' }));
+    setFormData(prev => ({ ...prev, divisionOfInterest: value as 'AppDevelopment' | 'Cybersecurity' | 'Both' }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -58,15 +58,15 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      const divisionMap: Record<'LePort' | 'LeTech' | 'Both', string> = {
-        'LePort': 'LePort - Export & Trade',
-        'LeTech': 'LeTech - Cybersecurity & IT Solutions',
+      const divisionMap: Record<'AppDevelopment' | 'Cybersecurity' | 'Both', string> = {
+        'AppDevelopment': 'App Development',
+        'Cybersecurity': 'Cybersecurity',
         'Both': 'Both Divisions'
       };
 
-      const requestTypeMap: Record<'LePort' | 'LeTech' | 'Both', string> = {
-        'LeTech': 'Demo Request',
-        'LePort': 'Appointment Request',
+      const requestTypeMap: Record<'AppDevelopment' | 'Cybersecurity' | 'Both', string> = {
+        'Cybersecurity': 'Demo Request',
+        'AppDevelopment': 'Consultation Request',
         'Both': 'General Inquiry'
       };
 
@@ -99,7 +99,7 @@ export default function Contact() {
         name: '',
         email: '',
         company: '',
-        divisionOfInterest: 'Both' as 'LePort' | 'LeTech' | 'Both',
+        divisionOfInterest: 'Both' as 'AppDevelopment' | 'Cybersecurity' | 'Both',
         message: '',
       });
     } catch (error) {
@@ -156,8 +156,8 @@ export default function Contact() {
                 {
                   icon: Mail,
                   title: 'Email',
-                  content: 'leakqoara@gmail.com',
-                  href: 'mailto:leakqoara@gmail.com',
+                  content: 'skavelontechnologies@gmail.com',
+                  href: 'mailto:skavelontechnologies@gmail.com',
                 },
                 {
                   icon: Phone,
@@ -165,12 +165,7 @@ export default function Contact() {
                   content: '6385582453',
                   href: 'tel:6385582453',
                 },
-                {
-                  icon: MapPin,
-                  title: 'Global Presence',
-                  content: 'East Asia',
-                  href: null,
-                },
+
               ].map((item, index) => (
                 <div key={index} className="glass-effect p-6 rounded-xl hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] transition-all duration-500">
                   <div className="flex items-start gap-4">
@@ -271,8 +266,8 @@ export default function Contact() {
                       <SelectValue placeholder="Select a division" />
                     </SelectTrigger>
                     <SelectContent className="bg-[#111] border-border">
-                      <SelectItem value="LePort">LePort - Export & Trade</SelectItem>
-                      <SelectItem value="LeTech">LeTech - Cybersecurity & IT Solutions</SelectItem>
+                      <SelectItem value="AppDevelopment">App Development</SelectItem>
+                      <SelectItem value="Cybersecurity">Cybersecurity</SelectItem>
                       <SelectItem value="Both">Both Divisions</SelectItem>
                     </SelectContent>
                   </Select>
@@ -299,12 +294,12 @@ export default function Contact() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="cta-button w-full flex items-center justify-center gap-2"
+                  className="w-full flex items-center justify-center gap-2 bg-accent hover:bg-accent/90 text-white text-base font-semibold py-6 rounded-lg transition-all duration-300 shadow-[0_0_20px_rgba(216,90,48,0.3)] hover:shadow-[0_0_30px_rgba(216,90,48,0.5)]"
                 >
                   {isSubmitting ? 'Sending...' : (
                     <>
-                      {formData.divisionOfInterest === 'LeTech' ? 'Request Demo' : 
-                       formData.divisionOfInterest === 'LePort' ? 'Get an Appointment' : 
+                      {formData.divisionOfInterest === 'Cybersecurity' ? 'Request Demo' : 
+                       formData.divisionOfInterest === 'AppDevelopment' ? 'Request Consultation' : 
                        'Send Message'}
                       <Send className="w-4 h-4" />
                     </>
@@ -339,15 +334,15 @@ export default function Contact() {
             {[
               {
                 q: 'What is the best way to reach your team?',
-                a: 'You can reach us through this contact form, email at leakqoara@gmail.com, or call us. We typically respond within 24-48 business hours.',
+                a: 'You can reach us through this contact form, email at skavelontechnologies@gmail.com, or call us. We typically respond within 24-48 business hours.',
               },
               {
                 q: 'Which division should I contact?',
-                a: 'If you need export and trade services, contact LePort. For cybersecurity, zero-trust architecture, and IT solutions, reach out to LeTech. You can select "Both" if you\'re interested in integrated solutions.',
+                a: 'For mobile and cross-platform app development, select App Development. For zero-trust architecture, cloud security, and IT protection, select Cybersecurity. You can select "Both" if you\'re interested in integrated solutions.',
               },
               {
                 q: 'Do you offer services in my region?',
-                a: 'We have established presence in East Asia. Select your region in the contact form for region-specific support.',
+                a: 'We offer services worldwide. Let us know your location in your message so our team can provide the best possible support for your time zone and region.',
               },
               {
                 q: 'What is your typical response time?',

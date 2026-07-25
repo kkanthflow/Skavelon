@@ -23,9 +23,9 @@ vi.mock("axios", () => ({
   },
 }));
 
-function createContext(host = "localhost:3000"): TrpcContext {
+function createContext(host = "localhost:3000", isAdmin = true): TrpcContext {
   return {
-    user: null,
+    user: isAdmin ? { id: 1, username: "admin", role: "admin" } as any : null,
     req: {
       protocol: "http",
       headers: {
@@ -66,14 +66,14 @@ describe("indexnow router", () => {
   });
 
   it("getSiteUrls returns correctly formatted paths", async () => {
-    const ctx = createContext("leakqoara.com");
+    const ctx = createContext("Skavelon.com");
     const caller = appRouter.createCaller(ctx);
 
     const result = await caller.indexnow.getSiteUrls();
 
-    expect(result.baseUrl).toBe("https://leakqoara.com");
-    expect(result.urls).toContain("https://leakqoara.com/");
-    expect(result.urls).toContain("https://leakqoara.com/contact");
+    expect(result.baseUrl).toBe("https://Skavelon.com");
+    expect(result.urls).toContain("https://Skavelon.com/");
+    expect(result.urls).toContain("https://Skavelon.com/contact");
   });
 
   it("verifyHosting returns success when file resolves correctly", async () => {
@@ -118,7 +118,7 @@ describe("indexnow router", () => {
   });
 
   it("submitUrls calls IndexNow global API and logs response status", async () => {
-    const ctx = createContext("leakqoara.com");
+    const ctx = createContext("Skavelon.com");
     const caller = appRouter.createCaller(ctx);
 
     (axios.post as any).mockResolvedValueOnce({
@@ -127,12 +127,12 @@ describe("indexnow router", () => {
     });
 
     const mockKey = "20d9bc2cd3fd486a8fd9c9ef33f1cb20";
-    const testUrls = ["https://leakqoara.com/", "https://leakqoara.com/about"];
+    const testUrls = ["https://Skavelon.com/", "https://Skavelon.com/about"];
 
     const result = await caller.indexnow.submitUrls({
       urls: testUrls,
       apiKey: mockKey,
-      host: "leakqoara.com",
+      host: "Skavelon.com",
     });
 
     expect(result.success).toBe(true);
@@ -140,7 +140,7 @@ describe("indexnow router", () => {
     expect(axios.post).toHaveBeenCalledWith(
       "https://api.indexnow.org/indexnow",
       expect.objectContaining({
-        host: "leakqoara.com",
+        host: "Skavelon.com",
         key: mockKey,
         urlList: testUrls,
       }),

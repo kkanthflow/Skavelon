@@ -1,5 +1,5 @@
 /**
- * LeakQoara Service Worker
+ * Skavelon Service Worker
  * ---------------------------------------------------------
  * Strategy:
  *   • Static assets (JS/CSS/fonts/images) → Cache-First with 1-year TTL
@@ -13,9 +13,9 @@
  */
 
 const CACHE_VERSION = "v2";
-const STATIC_CACHE   = `leakqoara-static-${CACHE_VERSION}`;
-const FONT_CACHE     = `leakqoara-fonts-${CACHE_VERSION}`;
-const IMAGE_CACHE    = `leakqoara-images-${CACHE_VERSION}`;
+const STATIC_CACHE   = `Skavelon-static-${CACHE_VERSION}`;
+const FONT_CACHE     = `Skavelon-fonts-${CACHE_VERSION}`;
+const IMAGE_CACHE    = `Skavelon-images-${CACHE_VERSION}`;
 
 /** Assets to pre-cache during install */
 const PRECACHE_ASSETS = [

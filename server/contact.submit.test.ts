@@ -108,7 +108,7 @@ describe("contact.submit", () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);
 
-    const divisions = ["LePort", "LeTech", "Both"] as const;
+    const divisions = ["LePort", "Cybersecurity", "Both"] as const;
 
     for (const division of divisions) {
       const result = await caller.contact.submit({

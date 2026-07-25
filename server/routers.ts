@@ -28,7 +28,6 @@ export const appRouter = router({
           name: z.string().min(1, "Name is required"),
           email: z.string().email("Invalid email address"),
           company: z.string().min(1, "Company is required"),
-          divisionOfInterest: z.enum(["LePort", "LeTech", "Both"]),
           message: z.string().min(10, "Message must be at least 10 characters"),
         })
       )
@@ -39,14 +38,13 @@ export const appRouter = router({
             name: input.name,
             email: input.email,
             company: input.company,
-            divisionOfInterest: input.divisionOfInterest,
             message: input.message,
           });
 
           // Notify owner
           await notifyOwner({
             title: `New Contact Form Submission from ${input.name}`,
-            content: `A new inquiry has been received from ${input.company}.\n\nDivision: ${input.divisionOfInterest}\nEmail: ${input.email}\n\nMessage: ${input.message}`,
+            content: `A new inquiry has been received from ${input.company}.\n\nEmail: ${input.email}\n\nMessage: ${input.message}`,
           });
 
           return {

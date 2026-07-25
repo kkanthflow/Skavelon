@@ -12,9 +12,9 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-12 h-12 rounded-full bg-black flex items-center justify-center border border-orange-500/30 overflow-hidden">
-                <img src="/logo.webp" alt="LeakQoara Logo" className="h-full w-full object-cover" />
+                <img src="/logo.png" alt="Skavelon Logo" className="h-full w-full object-cover" />
               </div>
-              <h3 className="font-bold text-lg text-foreground">Leakqoara Group</h3>
+              <h3 className="font-bold text-lg text-foreground">Skavelon Technologies</h3>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Connecting markets. Building tomorrow. Empowering global growth through integrated trade and technology solutions.
@@ -27,8 +27,8 @@ export default function Footer() {
             <ul className="space-y-2">
               {[
                 { label: 'About Us', href: '/about' },
-                { label: 'LePort', href: '/leport' },
-                { label: 'LeTech', href: '/letech' },
+                { label: 'Cybersecurity', href: '/cybersecurity' },
+                { label: 'App Development', href: '/app-development' },
                 { label: 'Services', href: '/services' },
               ].map((link) => (
                 <li key={link.href}>
@@ -47,7 +47,6 @@ export default function Footer() {
             <h4 className="font-semibold text-foreground mb-4">Services</h4>
             <ul className="space-y-2">
               {[
-                'Export Facilitation',
                 'Cybersecurity & IT Solutions',
                 'Logistics Support',
                 'Market Intelligence',
@@ -65,8 +64,8 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2">
                 <Mail className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
-                <a href="mailto:leakqoara@gmail.com" className="text-muted-foreground hover:text-accent transition-all duration-300 text-sm">
-                  leakqoara@gmail.com
+                <a href="/contact" className="text-muted-foreground hover:text-accent transition-all duration-300 text-sm">
+                  skavelontechnologies@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-2">
@@ -74,10 +73,6 @@ export default function Footer() {
                 <a href="tel:6385582453" className="text-muted-foreground hover:text-accent transition-all duration-300 text-sm">
                   6385582453
                 </a>
-              </li>
-              <li className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
-                <span className="text-muted-foreground text-sm">Global Presence</span>
               </li>
             </ul>
           </div>
@@ -89,7 +84,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            &copy; {currentYear} Leakqoara Group of Companies. All rights reserved.
+            &copy; {currentYear} Skavelon Technologies. All rights reserved.
           </p>
 
           {/* Social Links */}
@@ -97,7 +92,7 @@ export default function Footer() {
             <a href="https://www.linkedin.com/in/leak-qoara-60bb0b414/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-all duration-300">
               <Linkedin className="w-5 h-5" />
             </a>
-            <a href="https://x.com/LeakQoara" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-all duration-300">
+            <a href="https://x.com/Skavelon" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-all duration-300">
               <Twitter className="w-5 h-5" />
             </a>
             <a href="#" className="text-muted-foreground hover:text-accent transition-all duration-300">

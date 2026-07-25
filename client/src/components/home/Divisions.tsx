@@ -14,15 +14,15 @@ export default function Divisions() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Two Divisions. One Vision.
+            Our Core Expertise
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Leakqoara Group operates through specialized divisions that work together to create seamless global commerce solutions.
+            Skavelon Technologies delivers specialized solutions in enterprise security and modern application development.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* LePort Card */}
+          {/* App Development Card */}
           <motion.div 
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -37,32 +37,32 @@ export default function Divisions() {
                 <Globe className="w-8 h-8 text-accent" />
               </div>
             </div>
-            <h3 className="text-2xl font-bold text-foreground mb-3 relative z-10">LePort</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-3 relative z-10">App Development</h3>
             <p className="text-muted-foreground mb-6 leading-relaxed relative z-10">
-              Export & Global Trade Facilitation. Connect manufacturers with international buyers through comprehensive end-to-end export services.
+              Custom web and mobile applications engineered for scale, performance, and exceptional user experiences.
             </p>
             <ul className="space-y-2 mb-6 relative z-10">
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <span className="w-1.5 h-1.5 bg-accent rounded-full"></span>
-                Documentation Support
+                Modern Web Apps
               </li>
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <span className="w-1.5 h-1.5 bg-accent rounded-full"></span>
-                Buyer Sourcing
+                Enterprise Software
               </li>
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <span className="w-1.5 h-1.5 bg-accent rounded-full"></span>
-                Logistics Coordination
+                Cloud Integrations
               </li>
             </ul>
-            <Link href="/leport">
+            <Link href="/app-development">
               <a className="inline-flex items-center gap-2 text-accent hover:gap-3 transition-all duration-300 font-semibold relative z-10">
-                Explore LePort <ArrowRight className="w-4 h-4" />
+                Explore App Development <ArrowRight className="w-4 h-4" />
               </a>
             </Link>
           </motion.div>
 
-          {/* LeTech Card */}
+          {/* Cybersecurity Card */}
           <motion.div 
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -77,7 +77,7 @@ export default function Divisions() {
                 <Shield className="w-8 h-8 text-accent" />
               </div>
             </div>
-            <h3 className="text-2xl font-bold text-foreground mb-3 relative z-10">LeTech</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-3 relative z-10">Cybersecurity</h3>
             <p className="text-muted-foreground mb-6 leading-relaxed relative z-10">
               Cybersecurity & IT Solutions. Fortify your enterprise with zero-trust architecture and intelligent threat detection.
             </p>
@@ -95,9 +95,9 @@ export default function Divisions() {
                 Behavioral Threat Detection
               </li>
             </ul>
-            <Link href="/letech">
+            <Link href="/cybersecurity">
               <a className="inline-flex items-center gap-2 text-accent hover:gap-3 transition-all duration-300 font-semibold relative z-10">
-                Explore LeTech <ArrowRight className="w-4 h-4" />
+                Explore Cybersecurity <ArrowRight className="w-4 h-4" />
               </a>
             </Link>
           </motion.div>

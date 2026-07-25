@@ -1,5 +1,5 @@
 /**
- * LeakQoara — Node.js Cluster Load Balancer + Crash Prevention
+ * Skavelon — Node.js Cluster Load Balancer + Crash Prevention
  * ─────────────────────────────────────────────────────────────────────────────
  * Primary process: forks N workers (one per CPU), round-robin load balancing.
  *
@@ -85,7 +85,7 @@ let   isShuttingDown = false;
 function startPrimary() {
   console.log(
     `\n╔══════════════════════════════════════════════════╗\n` +
-    `║    LeakQoara Load Balancer  —  Starting          ║\n` +
+    `║    Skavelon Load Balancer  —  Starting          ║\n` +
     `╚══════════════════════════════════════════════════╝\n` +
     `  PID            : ${process.pid}\n` +
     `  CPU cores      : ${CPU_COUNT}\n` +

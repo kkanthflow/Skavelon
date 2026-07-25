@@ -37,7 +37,7 @@
         },
         "divisionOfInterest": {
           "name": "divisionOfInterest",
-          "type": "enum('LePort','LeTech','Both')",
+          "type": "enum('LePort','Cybersecurity','Both')",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false

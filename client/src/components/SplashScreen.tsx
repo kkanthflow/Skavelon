@@ -3,16 +3,20 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function SplashScreen({ onComplete }: { onComplete: () => void }) {
   const [isVisible, setIsVisible] = useState(true);
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const duration = isMobile ? 300 : 1000;
+  const fadeOut = isMobile ? 300 : 800;
+  const fadeOutSec = isMobile ? 0.3 : 0.8;
 
   useEffect(() => {
-    // The splash screen lasts for 1.0s, then fades out
+    // The splash screen is shortened on mobile to optimize Core Web Vitals (FCP/LCP)
     const timer = setTimeout(() => {
       setIsVisible(false);
-      setTimeout(onComplete, 800); // Wait for fade out animation to finish before unmounting
-    }, 1000);
+      setTimeout(onComplete, fadeOut);
+    }, duration);
 
     return () => clearTimeout(timer);
-  }, [onComplete]);
+  }, [onComplete, duration, fadeOut]);
 
   return (
     <AnimatePresence>
@@ -20,7 +24,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          transition={{ duration: fadeOutSec, ease: "easeInOut" }}
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#050505]"
         >
           <motion.div
@@ -30,10 +34,11 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
             className="flex flex-col items-center"
           >
             <div className="w-24 h-24 rounded-full bg-black flex items-center justify-center border border-orange-500/30 mb-8 shadow-[0_0_60px_rgba(249,115,22,0.4)] overflow-hidden">
-              <img src="/logo.webp" alt="LeakQoara Logo" className="h-full w-full object-cover" />
+              <img src="/logo.png" alt="Skavelon Logo" className="h-full w-full object-cover" />
             </div>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-[0.3em] text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">
-              LEAKQOARA
+            <h1 className="text-3xl md:text-5xl font-bold tracking-[0.3em] text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60 text-center uppercase flex flex-col gap-2">
+              <span>Skavelon</span>
+              <span className="text-lg md:text-2xl tracking-[0.4em] font-light text-white/40">Technologies</span>
             </h1>
             <motion.div 
               initial={{ width: 0, opacity: 0 }}

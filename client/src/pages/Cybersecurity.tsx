@@ -4,9 +4,9 @@ import { ArrowRight, Shield, Lock, Eye, Activity, Server, Code, Globe, XCircle, 
 import { useSEO } from "@/hooks/useSEO";
 import { motion } from 'framer-motion';
 
-export default function LeTech() {
+export default function Cybersecurity() {
   useSEO({
-    title: "LeTech - Cybersecurity & IT",
+    title: "Cybersecurity - Cybersecurity & IT",
     description: "Safeguard your digital assets, enforce zero-trust security, and ensure enterprise compliance with next-generation threat detection and data loss prevention systems like LeakGuard.",
   });
   const services = [
@@ -52,39 +52,6 @@ export default function LeTech() {
     },
   ];
 
-  const appServices = [
-    {
-      icon: Smartphone,
-      title: 'Android App Development',
-      description: 'Building custom, high-performance native Android applications designed for optimal user experience.',
-    },
-    {
-      icon: Apple,
-      title: 'iOS App Development',
-      description: 'Crafting elegant and secure native iOS applications tailored for Apple device ecosystems.',
-    },
-    {
-      icon: Palette,
-      title: 'UI/UX Design',
-      description: 'Designing intuitive user interfaces and experiences with modern aesthetics and research-driven workflows.',
-    },
-    {
-      icon: Layers,
-      title: 'Cross-Platform Development',
-      description: 'Creating versatile applications that operate seamlessly across multiple platforms using unified codebases.',
-    },
-    {
-      icon: ShieldCheck,
-      title: 'App Security & Compliance',
-      description: 'Enforcing robust data protection, secure authentication, and compliance with industry standards.',
-    },
-    {
-      icon: Wrench,
-      title: 'App Maintenance & Support',
-      description: 'Providing continuous monitoring, performance optimization, and updates to ensure perpetual reliability.',
-    },
-  ];
-
   const industries = [
     {
       name: 'Data Security & Privacy',
@@ -118,7 +85,7 @@ export default function LeTech() {
                   transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
                   className="text-5xl md:text-6xl font-bold text-foreground"
                 >
-                  LeTech
+                  Cybersecurity
                 </motion.h1>
                 <motion.p 
                   initial={{ opacity: 0, y: 20 }}
@@ -137,19 +104,17 @@ export default function LeTech() {
                   Safeguard your digital assets, enforce zero-trust security, and ensure enterprise compliance with next-generation threat detection and data loss prevention systems.
                 </motion.p>
               </div>
-              <Link href="/contact?division=LeTech">
-                <a>
+              <Link href="/contact?division=Cybersecurity"><a>
                   <Button className="cta-button flex items-center gap-2">
                     Request Demo <ArrowRight className="w-4 h-4" />
                   </Button>
-                </a>
-              </Link>
+                </a></Link>
             </div>
             <div className="relative hidden md:block aspect-[16/10] bg-muted/20 rounded-2xl overflow-hidden shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent rounded-2xl blur-3xl"></div>
               <img
-                src="/images/letech_security.webp"
-                alt="LeTech Technology Solutions"
+                src="/images/cybersecurity_hero.png"
+                alt="Cybersecurity Technology Solutions"
                 width={600}
                 height={375}
                 loading="lazy"
@@ -282,38 +247,6 @@ export default function LeTech() {
         </div>
       </motion.section>
 
-      {/* App Development Section */}
-      <motion.section 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
-        className="section-padding bg-[#111]"
-      >
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              App Development
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Innovative mobile and cross-platform applications crafted to power digital transformation.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-8">
-            {appServices.map((service, index) => (
-              <div key={index} className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] glass-effect p-8 rounded-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)]">
-                <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center mb-4">
-                  <service.icon className="w-6 h-6 text-accent" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{service.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
       {/* Industry Applications */}
       <motion.section 
         initial={{ opacity: 0, y: 30 }}
@@ -401,15 +334,13 @@ export default function LeTech() {
             Secure Your Digital Future
           </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Let LeTech fortify your organizational security infrastructure and safeguard your critical assets.
+            Let Cybersecurity fortify your organizational security infrastructure and safeguard your critical assets.
           </p>
-          <Link href="/contact?division=LeTech">
-            <a>
+          <Link href="/contact?division=Cybersecurity"><a>
               <Button className="cta-button flex items-center gap-2 mx-auto">
                 Request Demo <ArrowRight className="w-4 h-4" />
               </Button>
-            </a>
-          </Link>
+            </a></Link>
         </div>
       </motion.section>
     </div>

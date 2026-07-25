@@ -7,14 +7,14 @@ import { ArrowLeft, Lock } from 'lucide-react';
 export default function Privacy() {
   useSEO({
     title: "Privacy Policy",
-    description: "Privacy Policy for LeakQoara Group of Companies. Learn how we collect, protect, process, and respect user privacy and data rights.",
+    description: "Privacy Policy for Skavelon Technologies. Learn how we collect, protect, process, and respect user privacy and data rights.",
   });
 
   const sections = [
     {
       id: "intro",
       title: "1. Introduction & Scope",
-      content: "LeakQoara Group of Companies, including our divisions LePort, LeTech, Cybersecurity Services, and Research & Innovation Initiatives (collectively, \"LeakQoara\", \"we\", \"us\", or \"our\"), is committed to safeguarding the privacy and data rights of our users, corporate clients, partners, and visitors. This Privacy Policy details how we collect, process, store, and transfer personal data through our corporate website, platforms, and digital services. All processing is conducted in strict compliance with globally recognized standards, including the General Data Protection Regulation (GDPR)."
+      content: "Skavelon Technologies, including our divisions LePort, Cybersecurity, Cybersecurity Services, and Research & Innovation Initiatives (collectively, \"Skavelon\", \"we\", \"us\", or \"our\"), is committed to safeguarding the privacy and data rights of our users, corporate clients, partners, and visitors. This Privacy Policy details how we collect, process, store, and transfer personal data through our corporate website, platforms, and digital services. All processing is conducted in strict compliance with globally recognized standards, including the General Data Protection Regulation (GDPR)."
     },
     {
       id: "info-collect",
@@ -34,7 +34,7 @@ export default function Privacy() {
     {
       id: "use-info",
       title: "5. How Information Is Used",
-      content: "We process collected data under valid legal bases (including contract performance, compliance with legal obligations, and our legitimate business interests). Specifically, your information is used to: (a) respond to inquiries, book appointments for LePort, and arrange system demos for LeTech; (b) secure, manage, and optimize our corporate portals; (c) verify user eligibility under trade policies; and (d) comply with international trade, cybersecurity, and financial reporting standards."
+      content: "We process collected data under valid legal bases (including contract performance, compliance with legal obligations, and our legitimate business interests). Specifically, your information is used to: (a) respond to inquiries, book appointments for LePort, and arrange system demos for Cybersecurity; (b) secure, manage, and optimize our corporate portals; (c) verify user eligibility under trade policies; and (d) comply with international trade, cybersecurity, and financial reporting standards."
     },
     {
       id: "cookies",
@@ -44,7 +44,7 @@ export default function Privacy() {
     {
       id: "sharing",
       title: "7. Information Sharing and Disclosure",
-      content: "LeakQoara does not sell, trade, or rent personal data to third parties. We share information only under the following limited conditions: (a) with trusted corporate affiliates and divisions within the LeakQoara Group to fulfill your service requests; (b) with secure, vetted third-party service providers (such as hosting, email delivery systems, or logistics partners) bound by strict confidentiality agreements; and (c) when compelled by law, regulation, or legal proceedings from competent judicial authorities."
+      content: "Skavelon does not sell, trade, or rent personal data to third parties. We share information only under the following limited conditions: (a) with trusted corporate affiliates and divisions within the Skavelon Technologies to fulfill your service requests; (b) with secure, vetted third-party service providers (such as hosting, email delivery systems, or logistics partners) bound by strict confidentiality agreements; and (c) when compelled by law, regulation, or legal proceedings from competent judicial authorities."
     },
     {
       id: "security",
@@ -64,7 +64,7 @@ export default function Privacy() {
     {
       id: "transfers",
       title: "11. International Data Transfers",
-      content: "LeakQoara operates globally. Personal data collected on our systems may be stored and processed in secure data centers located in Singapore, East Asia, or other international jurisdictions. When transferring data across borders, we implement recognized safety mechanisms, including Standard Contractual Clauses (SCCs), to guarantee your data receives equivalent levels of protection."
+      content: "Skavelon operates globally. Personal data collected on our systems may be stored and processed in secure data centers located in Singapore, East Asia, or other international jurisdictions. When transferring data across borders, we implement recognized safety mechanisms, including Standard Contractual Clauses (SCCs), to guarantee your data receives equivalent levels of protection."
     },
     {
       id: "children",
@@ -140,13 +140,11 @@ export default function Privacy() {
               <p className="text-muted-foreground text-sm max-w-xl mx-auto mb-6">
                 To exercise any of your data protection rights, request information deletion, or submit privacy-related inquiries, please reach out to our secure Data Privacy Office.
               </p>
-              <Link href="/contact">
-                <a>
+              <Link href="/contact"><a>
                   <Button className="cta-button">
                     Contact Privacy Office
                   </Button>
-                </a>
-              </Link>
+                </a></Link>
             </motion.div>
           </div>
         </div>

@@ -33,7 +33,6 @@ export const contactSubmissions = mysqlTable("contact_submissions", {
   name: varchar("name", { length: 255 }).notNull(),
   email: varchar("email", { length: 320 }).notNull(),
   company: varchar("company", { length: 255 }).notNull(),
-  divisionOfInterest: mysqlEnum("divisionOfInterest", ["LePort", "LeTech", "Both"]).notNull(),
   message: text("message").notNull(),
   status: mysqlEnum("status", ["new", "read", "responded"]).default("new").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),

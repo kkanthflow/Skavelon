@@ -1,7 +1,7 @@
 {
-  "name": "Leakqoara Group of Companies",
-  "short_name": "LeakQoara",
-  "description": "Leakqoara Group empowers global commerce through integrated trade facilitation (LePort) and advanced cybersecurity & IT solutions (LeTech).",
+  "name": "Skavelon Technologies",
+  "short_name": "Skavelon",
+  "description": "Skavelon Technologies empowers global commerce through integrated trade facilitation (LePort) and advanced cybersecurity & IT solutions (Cybersecurity).",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a0f",
@@ -29,7 +29,7 @@
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "LeakQoara homepage"
+      "label": "Skavelon homepage"
     }
   ],
   "categories": ["business", "finance", "productivity"]

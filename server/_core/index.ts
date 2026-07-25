@@ -2,6 +2,7 @@ import "dotenv/config";
 import crypto from "crypto";
 import express from "express";
 import cookieParser from "cookie-parser";
+import compression from "compression";
 import { createServer, type IncomingMessage, type ServerResponse } from "http";
 import net from "net";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
@@ -28,6 +29,9 @@ const ALLOWED_ORIGINS: Set<string> = new Set(
 // Always allow localhost variants in development
 if (process.env.NODE_ENV !== "production") {
   ALLOWED_ORIGINS.add("http://localhost:3000");
+  ALLOWED_ORIGINS.add("http://localhost:3001");
+  ALLOWED_ORIGINS.add("http://localhost:3002");
+  ALLOWED_ORIGINS.add("http://localhost:3003");
   ALLOWED_ORIGINS.add("http://localhost:5173");
 }
 
@@ -60,6 +64,7 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 
 async function startServer() {
   const app    = express();
+  app.use(compression());
   const server = createServer(app);
 
   // Track open connections so we can drain them on shutdown

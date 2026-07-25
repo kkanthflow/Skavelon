@@ -29,12 +29,9 @@ export default function Navigation() {
   const navLinks = [
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
-    { label: 'LePort', href: '/leport' },
-    { label: 'LeTech', href: '/letech' },
+    { label: 'Cybersecurity', href: '/cybersecurity' },
+    { label: 'App Development', href: '/app-development' },
     { label: 'Services', href: '/services' },
-    { label: 'Global Reach', href: '/global-reach' },
-    { label: 'Contact', href: '/contact' },
-
   ];
 
   return (
@@ -51,10 +48,10 @@ export default function Navigation() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center border border-orange-500/30 overflow-hidden">
-             <img src="/logo.webp" alt="LeakQoara Logo" className="h-full w-full object-cover" />
+             <img src="/logo.png" alt="Skavelon Logo" className="h-full w-full object-cover" />
           </div>
           <span className="font-semibold text-white hidden lg:block">
-            Leakqoara
+            Skavelon
           </span>
         </Link>
 
@@ -69,11 +66,11 @@ export default function Navigation() {
 
         {/* CTA Button */}
         <div className="hidden md:flex items-center">
-          <Link href="/contact">
+          <Link href="/contact"><a>
             <Button className="bg-white text-black hover:bg-white/90 rounded-full px-6 text-sm font-semibold h-10">
               Get Started
             </Button>
-          </Link>
+          </a></Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -101,11 +98,11 @@ export default function Navigation() {
               </Link>
             ))}
             <div className="p-2 mt-2 border-t border-white/10">
-              <Link href="/contact" onClick={() => setIsOpen(false)}>
+              <Link href="/contact"><a onClick={() => setIsOpen(false)}>
                 <Button className="w-full bg-white text-black hover:bg-white/90 rounded-xl font-semibold h-11">
                   Get Started
                 </Button>
-              </Link>
+              </a></Link>
             </div>
           </div>
         </div>

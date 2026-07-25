@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'wouter';
 import { Globe } from 'lucide-react';
 import { useSEO } from "@/hooks/useSEO";
@@ -8,9 +9,50 @@ import CTASection from '@/components/home/CTASection';
 
 export default function Home() {
   useSEO({
-    title: "LeakQoara",
-    description: "Leakqoara Group empowers global commerce through integrated trade facilitation (LePort) and advanced cybersecurity & IT solutions (LeTech).",
+    title: "Skavelon",
+    description: "Skavelon Technologies empowers global commerce through integrated trade facilitation and advanced cybersecurity & IT solutions (Cybersecurity).",
   });
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    // Structured JSON-LD Schema for rich snippet results and crawlability
+    const orgSchema = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Skavelon Technologies",
+      "url": "https://leak-qoara.vercel.app/",
+      "logo": "https://leak-qoara.vercel.app/logo.png",
+      "description": "Skavelon Technologies empowers global commerce through integrated trade facilitation and advanced cybersecurity & IT solutions (Cybersecurity).",
+      "sameAs": [
+        "https://www.linkedin.com/in/leak-qoara-60bb0b414/",
+        "https://x.com/Skavelon"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-6385582453",
+        "contactType": "customer service",
+        "email": "skavelontechnologies@gmail.com"
+      }
+    };
+
+    const scriptId = "ld-json-schema";
+    let script = document.getElementById(scriptId);
+    if (!script) {
+      script = document.createElement("script");
+      script.id = scriptId;
+      script.setAttribute("type", "application/ld+json");
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(orgSchema);
+
+    return () => {
+      const existingScript = document.getElementById(scriptId);
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
   return (
     <div className="min-h-screen flex flex-col bg-[#0a0a0a]">
       {/* Hero Section */}

@@ -198,7 +198,7 @@ export const indexnowRouter = router({
       "/",
       "/about",
       "/leport",
-      "/letech",
+      "/cybersecurity",
       "/services",
       "/global-reach",
       "/contact",

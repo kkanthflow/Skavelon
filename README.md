@@ -535,7 +535,7 @@ Note: All TODO comments are remarks for the agent (you), not for the user.
 `package.json`
 ```ts
 {
-  "name": "leakqoara-group",
+  "name": "Skavelon-group",
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
@@ -821,7 +821,7 @@ export type AppRouter = typeof appRouter;
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Leakqoara Group of Companies</title>    
+    <title>Skavelon Technologies</title>    
     <!-- THIS IS THE START OF A COMMENT BLOCK, BLOCK TO BE DELETED: Google Fonts here, example:
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

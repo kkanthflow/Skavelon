@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 export default function About() {
   useSEO({
     title: "About Us",
-    description: "Learn more about Leakqoara Group, our core values, mission, organizational structure, and global market strategy in East Asia.",
+    description: "Learn more about Skavelon Technologies, our core values, and mission.",
   });
   const values = [
     { icon: Heart, title: 'Integrity', description: 'Transparent operations and ethical partnerships across all dealings.' },
@@ -31,7 +31,7 @@ export default function About() {
                   transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
                   className="text-5xl md:text-6xl font-bold text-foreground"
                 >
-              About Leakqoara Group
+              About Skavelon Technologies
             </motion.h1>
             <motion.p 
                   initial={{ opacity: 0, y: 20 }}
@@ -115,49 +115,6 @@ export default function About() {
         </div>
       </motion.section>
 
-      {/* Company Structure */}
-      <motion.section 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
-        className="section-padding bg-[#0a0a0a]"
-      >
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Our Structure
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Two specialized divisions working together to create seamless global solutions.
-            </p>
-          </div>
-
-          <div className="max-w-3xl mx-auto">
-            <div className="glass-effect p-12 rounded-xl text-center hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] transition-all duration-500">
-              <h3 className="text-2xl font-bold text-foreground mb-8">Leakqoara Group</h3>
-              <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-                <div className="flex-1 bg-[#0a0a0a] rounded-lg p-6 border border-border">
-                  <h4 className="text-xl font-bold text-accent mb-2">LePort</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Export & Global Trade Facilitation
-                  </p>
-                </div>
-                <div className="text-accent text-2xl hidden md:block">+</div>
-                <div className="flex-1 bg-[#0a0a0a] rounded-lg p-6 border border-border">
-                  <h4 className="text-xl font-bold text-accent mb-2">LeTech</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Cybersecurity & IT Solutions
-                  </p>
-                </div>
-              </div>
-              <p className="text-muted-foreground mt-8 text-sm">
-                Each division maintains operational autonomy while leveraging shared infrastructure and cross-divisional synergies.
-              </p>
-            </div>
-          </div>
-        </div>
-      </motion.section>
 
       {/* Strategic Timeline */}
       <motion.section 
@@ -199,36 +156,6 @@ export default function About() {
         </div>
       </motion.section>
 
-      {/* Global Reach */}
-      <motion.section 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
-        className="section-padding bg-[#0a0a0a]"
-      >
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Global Market Strategy
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Strategic presence in East Asia.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {[
-              { region: 'East Asia', focus: 'Primary hub for trade and technology innovation' },
-            ].map((item, index) => (
-              <div key={index} className="glass-effect p-6 rounded-xl text-center hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] transition-all duration-500">
-                <h4 className="text-lg font-bold text-accent mb-2">{item.region}</h4>
-                <p className="text-muted-foreground text-sm leading-relaxed">{item.focus}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
 
       {/* Certifications */}
       <motion.section 
@@ -268,15 +195,13 @@ export default function About() {
             Join Our Global Network
           </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Partner with Leakqoara Group to access international markets and drive sustainable growth.
+            Partner with Skavelon Technologies to access international markets and drive sustainable growth.
           </p>
-          <Link href="/contact">
-            <a>
+          <Link href="/contact"><a>
               <Button className="cta-button flex items-center gap-2 mx-auto">
                 Get in Touch <ArrowRight className="w-4 h-4" />
               </Button>
-            </a>
-          </Link>
+            </a></Link>
         </div>
       </motion.section>
     </div>
